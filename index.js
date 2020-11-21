@@ -20,6 +20,10 @@ app.use('/api/products', products);
 app.use('/api/product', orders);
 app.use('/api', users);
 
+app.get('/', (req, res)=>{
+	res.send('testing api');
+});
+
 connection.connect((err)=>{
 	if(err) console.log('error connecting');
 	else console.log('connected');
