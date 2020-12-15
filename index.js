@@ -2,6 +2,7 @@ const express = require('express'),
 	app = express(),
 	bodyparser = require('body-parser'),
 	cors = require('cors'),
+	path = require("path"),
 	port = process.env.PORT || 3001,
 //router and mysql connection
 	products = require('./routes/products').router,
@@ -13,6 +14,7 @@ const express = require('express'),
 
 //middlewares 
 app.use(bodyparser.urlencoded({extended:false}));
+app.use(express.static(path.join(__dirname,'public')));
 app.use(bodyparser.json());
 //enabling cors
 app.use(cors());

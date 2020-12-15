@@ -25,4 +25,12 @@ ProductModel.delete = function(id, callback){
 	});
 }
 
+ProductModel.update = function(data, callback){
+	sql.query('UPDATE products SET type = ?, price = ?, image_name = ?, quantity = ?, productname = ? WHERE id = ?', data,
+	(err, rows, fields)=>{
+		if(err) throw err;
+		else return callback(true);
+	});
+}
+
 module.exports = ProductModel;

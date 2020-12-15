@@ -16,6 +16,9 @@ router.get('/:id', productController.userProducts);
 //users delete their product(s)
 router.post('/delete', productController.deleteProducts);
 
+//update products
+router.post('/update', productController.update);
+
 module.exports = {router: router};
 
       
