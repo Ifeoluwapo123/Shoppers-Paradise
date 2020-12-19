@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const EmailMessage =  {};
+const config = require('../config').email;
 
 
 
@@ -15,8 +16,8 @@ EmailMessage.sendMessage = function(req, res){
               port: 465,
               secure: true, // true for 465, false for other ports
               auth: {
-                user: "adenusidamilola5@gmail.com", 
-                pass: "08100897169gmail.com", 
+                user: config.user, 
+                pass: config.password
               },
             });
           

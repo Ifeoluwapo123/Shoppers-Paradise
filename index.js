@@ -26,7 +26,7 @@ app.get('/', (req, res)=>{
 	res.send('testing api');
 });
 
-connection.connect((err)=>{
+connection.getConnection((err)=>{
 	if(err) console.log('error connecting');
 	else console.log('connected');
 });

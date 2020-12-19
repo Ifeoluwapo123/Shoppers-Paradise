@@ -72,8 +72,8 @@ UserController.userRegisteration = function(req, res){
 }
 
 UserController.userlogin = function(req, res){
-    const email = req.body.email,
-	    password = req.body.password;
+	const email = req.body.email,
+	password = req.body.password;
 
 	if(email === "" || password === ""){
 		res.send({status: 'input field(s) cannot be empty'});

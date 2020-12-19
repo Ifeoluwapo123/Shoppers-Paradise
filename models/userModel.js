@@ -28,7 +28,7 @@ UserModel.register = function(post, callback){
 }
 
 UserModel.validation = function(check, callback){
-    sql.query('SELECT email,password,id FROM users WHERE email = ?',check, (err, rows, fields)=>{
+    sql.query('SELECT id, email, password FROM users WHERE email = ?', check, (err, rows, fields)=>{
 		if(err) throw err;
 	    else{
 	    	return callback(rows[0]);

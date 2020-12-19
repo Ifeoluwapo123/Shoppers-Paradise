@@ -78,7 +78,7 @@ ProductController.update = function(req, res){
 					return;
                 }
 
-                if(req.body.price === '' || req.body.quantity === '' || req.body.quantity === ''){
+                if(req.body.price === ' ' || req.body.quantity === ' ' || req.body.quantity === ' '){
                     res.send({message: 'field(s) cannot be empty'});
                 }
 

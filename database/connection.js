@@ -3,7 +3,8 @@ const config = require('../config').database;
 
 const {localhost, user, password, database} = config.production;
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
+	connectionLimit: 10,
 	host: localhost,
 	user: user,
 	password: password,

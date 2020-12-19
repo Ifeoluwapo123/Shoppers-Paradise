@@ -17,6 +17,10 @@ config = {
         profile: './public/profileimages',
         product: './public/images/',
         filetypes: /jpeg|jpg|png|/
+    },
+    email: {
+        user: 'adenusidamilola5@gmail.com',
+        password: '08100897169'
     }
 }
 
