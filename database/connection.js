@@ -1,7 +1,7 @@
 const mysql = require('mysql');
 const config = require('../config').database;
 
-const {localhost, user, password, database} = config.development;
+const {localhost, user, password, database} = config.production;
 
 const connection = mysql.createPool({
 	host: localhost,
