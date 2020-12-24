@@ -7,10 +7,8 @@ const express = require('express'),
 //router and mysql connection
 	products = require('./routes/products').router,
 	users = require('./routes/users').router,
-	orders = require('./routes/orders').router,
-	connection = require('./database/connection').connection;
+	orders = require('./routes/orders').router
 //end
-    
 
 //middlewares 
 app.use(bodyparser.urlencoded({extended:false}));
@@ -26,13 +24,7 @@ app.get('/', (req, res)=>{
 	res.send('testing api');
 });
 
-connection.getConnection((err)=>{
-	if(err) console.log('error connecting');
-	else console.log('connected');
-});
-
-
-app.listen(port, (err, success)=>{
+app.listen(port, (err)=>{
 	if(err) console.log('error connection');
 	else console.log(`subscriber connected to ${port}`);
 });
