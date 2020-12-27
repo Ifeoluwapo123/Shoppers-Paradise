@@ -1,17 +1,12 @@
-const mysql = require('mysql');
 const config = require('../config').database;
 
 const {localhost, user, password, database} = config.production;
 
-const connection = mysql.createPool({
+const db_config = {
 	host: localhost,
 	user: user,
 	password: password,
 	database: database,
-	connectionLimit: 10,
-	queueLimit: 30,
-	acquireTimeout: 1000000,
-	queryTimeout: 6000
-});
+}
 
-module.exports = {connection: connection};
+module.exports = db_config;
