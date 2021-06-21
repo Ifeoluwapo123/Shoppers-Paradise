@@ -1,31 +1,48 @@
-const express = require('express'),
-	app = express(),
-	bodyparser = require('body-parser'),
-	cors = require('cors'),
-	path = require("path"),
-	port = process.env.PORT || 3001,
-//routers
-	products = require('./routes/products').router,
-	users = require('./routes/users').router,
-	orders = require('./routes/orders').router;
-//end
+const express = require("express");
+const app = express();
+const bodyparser = require("body-parser");
+const cors = require("cors");
+const path = require("path");
+const port = process.env.PORT || 3001;
+const handleResponse = require("./utils/response.js");
+const passport = require("passport");
+const passportConfig = require("./config/passport");
+const cookieSession = require("cookie-session");
+passportConfig(passport);
 
-//middlewares 
-app.use(bodyparser.urlencoded({extended:false}));
-app.use(express.static(path.join(__dirname,'public')));
-app.use(bodyparser.json());
+app.use(passport.initialize());
+app.use(passport.session());
+//middlewares
+app.use(bodyparser.urlencoded({ extended: false }));
+//app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
+//app.use(bodyparser.json());
 app.use(cors());
+
 //end
 
-app.use('/api/products', products);
-app.use('/api/product', orders);
-app.use('/api', users);
+//COOKIE CONFIG
+app.use(
+  cookieSession({
+    name: "shopingsession",
+    keys: ["ensure this is protected", "ensure! this is !protected"],
+  })
+);
 
-app.get('/', (req, res)=>{
-	res.send('testing api');
+app.use("/api/products", require("./routes/products.route"));
+app.use("/api/orders", require("./routes/orders.route"));
+app.use("/api/users", require("./routes/users.route"));
+app.use("/api/auth", require("./routes/auth.route"));
+
+app.get("/", (req, res) => {
+  const data = ["dami", "ade"].map((_, key) => {
+    return `${_} hello ${key}`;
+  });
+  console.log(data);
+  handleResponse(req, res, 404, { data: data }, "testing api");
 });
 
-app.listen(port, (err)=>{
-	if(err) console.log('error connection');
-	else console.log(`subscriber connected to ${port}`);
+app.listen(port, (err) => {
+  if (err) console.log("error connection");
+  else console.log(`subscriber connected to ${port}`);
 });
