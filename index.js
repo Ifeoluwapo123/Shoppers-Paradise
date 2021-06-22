@@ -10,9 +10,10 @@ passportConfig(passport);
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(bodyparser.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(bodyparser.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(cors());
 
 //COOKIE CONFIG
