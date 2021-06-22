@@ -11,7 +11,7 @@ router.use(express.static("public"));
 router.get("/", productController.getOtherProducts);
 
 //products uploaded by users
-router.get("/:id", productController.getUserProducts);
+router.get("/:userId", productController.getUserProducts);
 
 //users delete their product(s)
 router.post("/delete", productController.deleteUserProducts);

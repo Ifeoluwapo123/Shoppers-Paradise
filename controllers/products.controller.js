@@ -8,7 +8,7 @@ const handleResponse = require("../utils/response.js");
 const ProductController = function () {};
 
 ProductController.getUserProducts = function (req, res) {
-  const id = req.params.id;
+  const id = req.params.userId;
   Product.productsByUsers(function (err, data) {
     if (err) handleResponse(req, res, 500);
     else {
@@ -64,7 +64,7 @@ ProductController.deleteUserProducts = function (req, res) {
 
 ProductController.updateUserProduct = function (req, res) {
   let setPath = new Storage(config.product, config.filetypes),
-    upload = setPath.uploadFile();
+  upload = setPath.uploadFile();
 
   upload(req, res, (err) => {
     if (err) {
