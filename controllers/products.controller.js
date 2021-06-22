@@ -1,7 +1,7 @@
 const Product = require("../models/Product");
 const fs = require("fs");
 const config = require("../config/config").image;
-const { convertImageToBase64 } = require("../utils/inputValidate.js");
+const convertImageToBase64 = require("../utils/inputValidate.js");
 const Storage = require("../dist/storage");
 const handleResponse = require("../utils/response.js");
 
@@ -44,8 +44,8 @@ ProductController.getOtherProducts = function (req, res) {
             ...result,
             image: convertImageToBase64("images", result.image_name.trim()),
           };
-        } catch (error) {
-          handleResponse(req, res, 200, { data: data });
+        } catch (err) { 
+          return handleResponse(req, res, 200, { data: data });
         }
       });
       handleResponse(req, res, 200, {

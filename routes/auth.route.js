@@ -2,7 +2,6 @@ const express = require("express");
 const passport = require("passport");
 const router = express.Router();
 const handleResponse = require("../utils/response");
-const authMiddleware = require("../middlewares/auth");
 
 router.post(
   "/login",

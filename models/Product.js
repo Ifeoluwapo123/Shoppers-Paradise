@@ -1,4 +1,4 @@
-const sql = require('../database/connection').connection;
+const sql = require('../database/connection');
 const handleResponse =  require('../utils/response.js');
 const ProductModel= function(){};
 

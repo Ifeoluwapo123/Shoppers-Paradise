@@ -1,5 +1,5 @@
-const config = require("../config/config").database,
-  mysql = require("mysql");
+const config = require("../config/config").database;
+const mysql = require("mysql");
 
 const { localhost, user, password, database } = config.development;
 
