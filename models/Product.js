@@ -23,7 +23,7 @@ ProductModel.productsByUsers = function(callback){
 ProductModel.delete = function(id, callback){
     sql.query('DELETE FROM products WHERE id = ?',id, (err, rows, fields)=>{
 		if(err) return callback(true, null);
-		else return callback(null, rows);
+		else return callback(rows);
 	});
 }
 

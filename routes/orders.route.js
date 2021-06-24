@@ -1,22 +1,21 @@
-const express = require("express");
-const bodyparser = require("body-parser");
-const router = express.Router();
-const orderController = require("../controllers/order.controller");
+const express = require('express')
+const router = express.Router()
+const orderController = require('../controllers/order.controller')
 
-router.use(bodyparser.urlencoded({ extended: false }));
-router.use(express.json());
-router.use(express.static("public"));
+router.use(express.urlencoded({ extended: false }))
+router.use(express.json())
+router.use(express.static('public'))
 
 //user make order(s)
-router.post("/", orderController.makeOrders);
+router.post('/', orderController.makeOrders)
 
 //delete order
-router.post("/delete", orderController.deleteOrders);
+router.post('/delete', orderController.deleteOrders)
 
 //total orders
-router.get("/total/:id", orderController.getNumberOfOrders);
+router.get('/total/:id', orderController.getNumberOfOrders)
 
 //my order details
-router.get("/details/:id", orderController.getMyOrdersdetails);
+router.get('/details/:id', orderController.getMyOrdersdetails)
 
-module.exports = router;
+module.exports = router

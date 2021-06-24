@@ -1,9 +1,8 @@
 const express = require("express");
-const bodyparser = require("body-parser");
 const router = express.Router();
 const productController = require("../controllers/products.controller");
 
-router.use(bodyparser.urlencoded({ extended: false }));
+router.use(express.urlencoded({ extended: false }));
 router.use(express.json());
 router.use(express.static("public"));
 

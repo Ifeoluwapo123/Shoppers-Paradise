@@ -53,15 +53,17 @@ UserModel.uploadpics = function (data, callback) {
     data,
     (err, rows, fields) => {
       if (err) return callback(true, null);
-      else return callback(null);
+      else return callback(null, rows);
     }
   );
 };
 
 UserModel.uploadproduct = function (data, callback) {
   sql.query("INSERT INTO products SET ?", data, (err, rows, fields) => {
-    if (err) return callback(true, null);
-    else return callback(null);
+    if (err) {
+      console.log(err)
+      return callback(true, null);
+    }else return callback(null, rows);
   });
 };
 
