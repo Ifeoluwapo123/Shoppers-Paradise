@@ -29,7 +29,6 @@ app.use(
 )
 
 // app.use(authMiddleware.ensureAuth)
-
 app.use('/api/products', require('./routes/products.route'))
 app.use('/api/orders', require('./routes/orders.route'))
 app.use('/api/users', require('./routes/users.route'))
