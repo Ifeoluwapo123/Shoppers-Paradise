@@ -3,6 +3,28 @@ const passport = require('passport')
 const router = express.Router()
 const handleResponse = require('../utils/response')
 
+/**
+ * @openapi
+ * /login:
+ *   post:
+ *     description: login authentication
+ *     responses:
+ *        '200':
+ *          description: Successfully returned all user
+ *        '500':
+ *          description: Failed to query for users
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: body
+ *         required: true
+ *         type: string
+ */
 router.post(
   '/login',
   passport.authenticate('passportLogin', {
@@ -29,6 +51,35 @@ router.post(
   },
 )
 
+/**
+ * @openapi
+ * /register:
+ *   post:
+ *     description: user registration
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: fullname
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: email
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: confirmpassword
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: phonenumber
+ *         in: body
+ *         required: true
+ *         type: string
+ */
 router.post(
   '/register',
   passport.authenticate('passportRegister', {
@@ -48,6 +99,23 @@ router.post(
   },
 )
 
+/**
+ * @openapi
+ * /update:
+ *   post:
+ *     description: update user password
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: email
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: password
+ *         in: body
+ *         required: true
+ *         type: string
+ */
 router.post(
   '/update',
   passport.authenticate('passportUpdate', {
@@ -72,6 +140,7 @@ router.post(
 router.get('/login', (req, res) => {
   return handleResponse(req, res, 500, null, 'login failed')
 })
+
 
 router.get('/logout', (req, res) => {
   console.log(req.session.user)

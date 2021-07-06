@@ -6,10 +6,58 @@ router.use(express.urlencoded({ extended: false }))
 router.use(express.json())
 router.use(express.static('public'))
 
-//user make order(s)
+/**
+ * @openapi
+ * /:
+ *   post:
+ *     description: user make orders
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: product_id
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: use_id
+ *         in: body
+ *         required: true
+ *         type: string
+ *      - name: name
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: order
+ *         in: body
+ *         required: true
+ *         type: string
+ */
 router.post('/', orderController.makeOrders)
 
-//delete order
+/**
+ * @openapi
+ * /delele:
+ *   post:
+ *     description: user make orders
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: product_id
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: use_id
+ *         in: body
+ *         required: true
+ *         type: string
+ *      - name: name
+ *         in: body
+ *         required: true
+ *         type: string
+ *       - name: order
+ *         in: body
+ *         required: true
+ *         type: string
+ */
 router.post('/delete', orderController.deleteOrders)
 
 //total orders
