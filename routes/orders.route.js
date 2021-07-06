@@ -18,15 +18,15 @@ router.use(express.static('public'))
  *         in: body
  *         required: true
  *         type: string
- *       - name: use_id
+ *       - name: user_id
  *         in: body
  *         required: true
  *         type: string
- *      - name: name
+ *       - name: name
  *         in: body
  *         required: true
  *         type: string
- *       - name: order
+ *       - name: order 
  *         in: body
  *         required: true
  *         type: string
@@ -37,33 +37,49 @@ router.post('/', orderController.makeOrders)
  * @openapi
  * /delele:
  *   post:
- *     description: user make orders
+ *     description: delete user's order
  *     produces:
  *       - application/json
  *     parameters:
+ *       - name: user_id
+ *         in: params
+ *         required: true
+ *         type: string
  *       - name: product_id
- *         in: body
- *         required: true
- *         type: string
- *       - name: use_id
- *         in: body
- *         required: true
- *         type: string
- *      - name: name
- *         in: body
- *         required: true
- *         type: string
- *       - name: order
- *         in: body
+ *         in: params
  *         required: true
  *         type: string
  */
 router.post('/delete', orderController.deleteOrders)
 
-//total orders
+/**
+ * @openapi
+ * /total:
+ *   get:
+ *     description: get numbers of orders
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: params
+ *         required: true
+ *         type: string
+ */
 router.get('/total/:id', orderController.getNumberOfOrders)
 
-//my order details
+/**
+ * @openapi
+ * /total:
+ *   get:
+ *     description: get order detais
+ *     produces:
+ *       - application/json
+ *     parameters:
+ *       - name: id
+ *         in: params
+ *         required: true
+ *         type: string
+ */
 router.get('/details/:id', orderController.getMyOrdersdetails)
 
 module.exports = router
