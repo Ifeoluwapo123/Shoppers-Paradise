@@ -8,9 +8,14 @@ router.use(express.static("public"));
 
 /**
  * @openapi
- * /:
+ * /api/products/:
  *   get:
  *     description: get products
+ *     responses:
+ *        '200':
+ *          description: ok
+ *        '500':
+ *          description: internal server error
  *     produces:
  *       - application/json
  *     parameters:
@@ -23,9 +28,14 @@ router.get("/", productController.getOtherProducts);
 
 /**
  * @openapi
- * /{userId}:
+ * /api/products/{userId}:
  *   get:
  *     description: get user's products
+ *     responses:
+ *        '200':
+ *          description: ok
+ *        '404':
+ *          description: not found
  *     produces:
  *       - application/json
  *     parameters:
@@ -38,9 +48,14 @@ router.get("/:userId", productController.getUserProducts);
 
 /**
  * @openapi
- * /delete:
+ * /api/products/delete:
  *   post:
  *     description: delete user's product
+ *     responses:
+ *        '200':
+ *          description: Successfully deleted order
+ *        '500':
+ *          description: internal error
  *     produces:
  *       - application/json
  *     parameters:
@@ -53,9 +68,16 @@ router.post("/delete", productController.deleteUserProducts);
 
 /**
  * @openapi
- * /update:
+ * /api/products/update:
  *   post:
  *     description: update user's product
+ *     responses:
+ *        '204':
+ *          description: Successfully updated
+ *        '403':
+ *          description: empty fields
+ *        '500':
+ *          description: internal serever error
  *     produces:
  *       - application/json
  *     parameters:

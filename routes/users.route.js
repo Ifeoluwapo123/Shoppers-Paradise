@@ -5,9 +5,16 @@ const sendemail = require('../controllers/email.controller')
 
 /**
  * @openapi
- * /update:
+ * /api/users/update:
  *   post:
  *     description: user upload product
+ *     responses:
+ *        '200':
+ *          description: Successfully uploaded
+ *        '403':
+ *          description: validation error
+ *        '500':
+ *          description: internal error
  *     produces:
  *       - application/json
  *     parameters:
@@ -36,9 +43,14 @@ router.post('/upload', userController.uploadUserProduct)
 
 /**
  * @openapi
- * /sendmail:
+ * /api/users/sendmail:
  *   post:
  *     description: user send mail
+ *     responses:
+ *        '200':
+ *          description: Successfully sent email
+ *        '403':
+ *          description: validation error
  *     produces:
  *       - application/json
  *     parameters:
@@ -58,9 +70,12 @@ router.post('/sendmail', sendemail.sendMessage)
 
 /**
  * @openapi
- * /:
+ * /api/users/:
  *   get:
  *     description: get all users
+ *     responses:
+ *        '200':
+ *          description: ok
  *     produces:
  *       - application/json
  */
@@ -68,9 +83,14 @@ router.get('/', userController.getAllUsers)
 
 /**
  * @openapi
- * /{id}:
+ * /api/users/{id}:
  *   get:
  *     description: get user by id
+ *     responses:
+ *        '200':
+ *          description: ok
+ *        '404':
+ *          description: not found
  *     produces:
  *       - application/json
  *     parameters:
@@ -83,9 +103,16 @@ router.get('/:id', userController.getCurrentUser)
 
 /**
  * @openapi
- * /profile:
+ * /api/users/profile:
  *   post:
  *     description: user upload picture
+ *     responses:
+ *        '200':
+ *          description: Successfully uploaded
+ *        '403':
+ *          description: validation error
+ *        '500':
+ *          description: internal error
  *     produces:
  *       - application/json
  *     parameters:
@@ -102,9 +129,16 @@ router.post('/profile', userController.userUploadPic)
 
 /**
  * @openapi
- * /delete/{id}:
+ * /api/users/delete/{id}:
  *   delete:
- *     description: user send mail
+ *     description: delete user
+ *     responses:
+ *        '204':
+ *          description: Successfully deleted
+ *        '404':
+ *          description: not found
+ *        '500':
+ *          description: internal error
  *     produces:
  *       - application/json
  *     parameters:

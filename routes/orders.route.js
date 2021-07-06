@@ -8,9 +8,14 @@ router.use(express.static('public'))
 
 /**
  * @openapi
- * /:
+ * /api/orders/:
  *   post:
  *     description: user make orders
+ *     responses:
+ *        '204':
+ *          description: Successfully order
+ *        '500':
+ *          description: Internal server error
  *     produces:
  *       - application/json
  *     parameters:
@@ -26,7 +31,7 @@ router.use(express.static('public'))
  *         in: body
  *         required: true
  *         type: string
- *       - name: order 
+ *       - name: order
  *         in: body
  *         required: true
  *         type: string
@@ -35,9 +40,16 @@ router.post('/', orderController.makeOrders)
 
 /**
  * @openapi
- * /delele:
+ * /api/orders/delele:
  *   post:
  *     description: delete user's order
+ *     responses:
+ *        '200':
+ *          description: Successfully deleted order
+ *        '404':
+ *          description: not found
+ *        '500':
+ *          description: internal problem
  *     produces:
  *       - application/json
  *     parameters:
@@ -54,9 +66,14 @@ router.post('/delete', orderController.deleteOrders)
 
 /**
  * @openapi
- * /total:
+ * /api/orders/total:
  *   get:
  *     description: get numbers of orders
+ *     responses:
+ *        '200':
+ *          description: ok
+ *        '505':
+ *          description: internal server error
  *     produces:
  *       - application/json
  *     parameters:
@@ -69,9 +86,14 @@ router.get('/total/:id', orderController.getNumberOfOrders)
 
 /**
  * @openapi
- * /total:
+ * /api/orders/total:
  *   get:
  *     description: get order detais
+ *     responses:
+ *        '200':
+ *          description: ok
+ *        '500':
+ *          description: internal server error
  *     produces:
  *       - application/json
  *     parameters:

@@ -5,7 +5,7 @@ const handleResponse = require('../utils/response')
 
 /**
  * @openapi
- * /login:
+ * /api/auth/login:
  *   post:
  *     description: login authentication
  *     responses:
@@ -53,9 +53,14 @@ router.post(
 
 /**
  * @openapi
- * /register:
+ * /api/auth/register:
  *   post:
  *     description: user registration
+ *     responses:
+ *        '403':
+ *          description: validation error
+ *        '200':
+ *          description: successfully registered
  *     produces:
  *       - application/json
  *     parameters:
@@ -101,9 +106,14 @@ router.post(
 
 /**
  * @openapi
- * /update:
+ * /api/auth/update:
  *   post:
  *     description: update user password
+ *     responses:
+ *        '403':
+ *          description: invalid email
+ *        '200':
+ *          description: successfully updated
  *     produces:
  *       - application/json
  *     parameters:
@@ -137,11 +147,22 @@ router.post(
   },
 )
 
+
 router.get('/login', (req, res) => {
   return handleResponse(req, res, 500, null, 'login failed')
 })
 
-
+// /**
+//  * @openapi
+//  * /api/auth/logout:
+//  *   get:
+//  *     description: user logout
+//  *     responses:
+//  *        '201':
+//  *          description: successfully logout
+//  *     produces:
+//  *       - application/json
+//  */
 router.get('/logout', (req, res) => {
   console.log(req.session.user)
   req.logout()
